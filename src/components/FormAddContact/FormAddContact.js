@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
+import { Form, Field, FormGroup, Button } from './FormAddContact.styled';
 
 export const FormAddContact = ({ onAddContact }) => {
   return (
@@ -14,9 +14,11 @@ export const FormAddContact = ({ onAddContact }) => {
     >
       {/* onSubmit={() => onAddContact(name)} */}
       <Form>
-        <label htmlFor="name">Name</label>
-        <Field type="text" name="name" placeholder="Введіть ім'я" />
-        <button type="submit">Add contact</button>
+        <FormGroup>
+          Name
+          <Field type="text" name="name" placeholder="Введіть ім'я" />
+          <Button type="submit">Add contact</Button>
+        </FormGroup>
       </Form>
     </Formik>
   );
