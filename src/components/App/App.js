@@ -21,16 +21,36 @@ export class App extends Component {
   };
 
   addContact = newContact => {
-    this.setState(prevState => {
+    const { contacts } = this.state;
+    const isExistContact = contacts.find(contact => {
+      return contact.name.toLowerCase().includes(newContact.name.toLowerCase());
+    });
+    // console.log('isExistContact :>> ', isExistContact);
+
+    if (isExistContact) {
+      return alert(`${newContact.name} is already in contacts`);
+    }
+
+    return this.setState(prevState => {
       return {
         contacts: [...prevState.contacts, { ...newContact, id: nanoid() }],
       };
     });
+
+    // isExistContact
+    //   ? alert(`${newContact.name} is already in contacts`)
+    //   : this.setState(prevState => {
+    //       return {
+    //         contacts: [...prevState.contacts, { ...newContact, id: nanoid() }],
+    //       };
+    //     });
   };
 
   filterContacts = newFilter => {
     this.setState({ filter: newFilter });
   };
+
+  deleteContact = idContact => {};
 
   render() {
     const { contacts, filter } = this.state;
@@ -47,11 +67,11 @@ export class App extends Component {
         </Section>
         <Section>
           <h3>Contacts</h3>
-          <Filter filter={this.state.filter} onFilter={this.filterContacts}>
-            Filter
-          </Filter>
+          <Filter filter={this.state.filter} onFilter={this.filterContacts} />
           <Wrapper>
-            <ContactsList items={filteredItems}>ContactsList</ContactsList>
+            {filteredItems.length > 0 && (
+              <ContactsList items={filteredItems}>ContactsList</ContactsList>
+            )}
           </Wrapper>
         </Section>
       </>

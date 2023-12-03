@@ -1,16 +1,19 @@
 import { Formik } from 'formik';
-import { Form, Field } from './Filter.styled';
+import { Form, Field, FormGroup } from './Filter.styled';
 
 export const Filter = ({ filter, onFilter }) => {
   return (
     <Formik initialValues={{ filter: '' }}>
       <Form>
-        <Field
-          type="text"
-          placeholder="Фільтр"
-          value={filter}
-          onChange={evt => onFilter(evt.target.value)}
-        />
+        <FormGroup>
+          Find contacts by name
+          <Field
+            type="text"
+            placeholder="Фільтр"
+            value={filter}
+            onChange={evt => onFilter(evt.target.value)}
+          />
+        </FormGroup>
       </Form>
     </Formik>
 
