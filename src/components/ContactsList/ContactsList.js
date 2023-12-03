@@ -1,5 +1,4 @@
 export const ContactsList = ({ items }) => {
-  console.log('items :>> ', items);
   return (
     <ul>
       {items.map(item => {

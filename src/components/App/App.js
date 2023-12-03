@@ -4,6 +4,8 @@ import { Wrapper } from 'components/ContactsList/ContactsList.styled';
 import { ContactsList } from 'components/ContactsList/ContactsList';
 import { FormAddContact } from 'components/FormAddContact/FormAddContact';
 import { Section } from './App.styled';
+import { Filter } from 'components/Filter/Filter';
+// import { FilterW } from 'components/Filter/Filter.styled';
 
 export class App extends Component {
   state = {
@@ -13,6 +15,7 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
+    filter: '',
     name: '',
     number: '',
   };
@@ -25,7 +28,17 @@ export class App extends Component {
     });
   };
 
+  filterContacts = newFilter => {
+    this.setState({ filter: newFilter });
+  };
+
   render() {
+    const { contacts, filter } = this.state;
+    const filteredItems = contacts.filter(item => {
+      const hasName = item.name.toLowerCase().includes(filter.toLowerCase());
+      return hasName;
+    });
+
     return (
       <>
         <Section>
@@ -34,12 +47,11 @@ export class App extends Component {
         </Section>
         <Section>
           <h3>Contacts</h3>
-          {/* <Filter>Filter</Filter> */}
-          Filter
+          <Filter filter={this.state.filter} onFilter={this.filterContacts}>
+            Filter
+          </Filter>
           <Wrapper>
-            <ContactsList items={this.state.contacts}>
-              ContactsList
-            </ContactsList>
+            <ContactsList items={filteredItems}>ContactsList</ContactsList>
           </Wrapper>
         </Section>
       </>

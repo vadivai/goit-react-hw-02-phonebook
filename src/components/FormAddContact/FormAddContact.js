@@ -16,7 +16,7 @@ export const FormAddContact = ({ onAddContact }) => {
       }}
       validationSchema={contactsValidation}
       onSubmit={(values, actions) => {
-        console.log('values :>> ', values);
+        // console.log('values :>> ', values);
         onAddContact(values);
         actions.resetForm();
       }}
