@@ -1,9 +1,12 @@
-export const ContactsItem = ({ item }) => {
+import { LiItem } from './ContactsItem.styled';
+
+export const ContactsItem = ({ item, onDelete }) => {
   return (
-    <li key={item.id}>
-      <p>
+    <LiItem>
+      <span>
         {item.name} {item.number}
-      </p>
-    </li>
+      </span>
+      <button onClick={() => onDelete(item.id)}>Delete</button>
+    </LiItem>
   );
 };

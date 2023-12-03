@@ -9,6 +9,7 @@ export const Filter = ({ filter, onFilter }) => {
           Find contacts by name
           <Field
             type="text"
+            name="filter"
             placeholder="Фільтр"
             value={filter}
             onChange={evt => onFilter(evt.target.value)}

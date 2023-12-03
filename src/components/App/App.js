@@ -50,7 +50,13 @@ export class App extends Component {
     this.setState({ filter: newFilter });
   };
 
-  deleteContact = idContact => {};
+  deleteContact = idContact => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(item => item.id !== idContact),
+      };
+    });
+  };
 
   render() {
     const { contacts, filter } = this.state;
@@ -70,7 +76,9 @@ export class App extends Component {
           <Filter filter={this.state.filter} onFilter={this.filterContacts} />
           <Wrapper>
             {filteredItems.length > 0 && (
-              <ContactsList items={filteredItems}>ContactsList</ContactsList>
+              <ContactsList items={filteredItems} onDelete={this.deleteContact}>
+                ContactsList
+              </ContactsList>
             )}
           </Wrapper>
         </Section>

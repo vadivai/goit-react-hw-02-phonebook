@@ -32,7 +32,7 @@ export const ErrorMessage = styled(FormikError)`
 `;
 
 export const Button = styled.button`
-  display: block;
+  /* display: block; */
   max-width: 100px;
   padding: 8px 8px;
   color: white;
