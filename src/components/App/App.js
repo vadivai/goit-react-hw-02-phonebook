@@ -5,7 +5,6 @@ import { ContactsList } from 'components/ContactsList/ContactsList';
 import { FormAddContact } from 'components/FormAddContact/FormAddContact';
 import { Section } from './App.styled';
 import { Filter } from 'components/Filter/Filter';
-// import { FilterW } from 'components/Filter/Filter.styled';
 
 export class App extends Component {
   state = {
@@ -16,8 +15,6 @@ export class App extends Component {
       // { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   addContact = newContact => {
@@ -25,7 +22,6 @@ export class App extends Component {
     const isExistContact = contacts.find(contact => {
       return contact.name.toLowerCase().includes(newContact.name.toLowerCase());
     });
-    // console.log('isExistContact :>> ', isExistContact);
 
     if (isExistContact) {
       return alert(`${newContact.name} is already in contacts`);
@@ -36,14 +32,6 @@ export class App extends Component {
         contacts: [...prevState.contacts, { ...newContact, id: nanoid() }],
       };
     });
-
-    // isExistContact
-    //   ? alert(`${newContact.name} is already in contacts`)
-    //   : this.setState(prevState => {
-    //       return {
-    //         contacts: [...prevState.contacts, { ...newContact, id: nanoid() }],
-    //       };
-    //     });
   };
 
   filterContacts = newFilter => {

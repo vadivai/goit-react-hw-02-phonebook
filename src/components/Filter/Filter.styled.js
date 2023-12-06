@@ -1,12 +1,4 @@
-// import styled from 'styled-components';
 // import { Filter } from './Filter';
-
-// export const FilterW = styled(Filter)`
-//   display: block;
-//   padding: 10px;
-//   height: 30px;
-//   outline: none;
-// `;
 
 import styled from 'styled-components';
 import {

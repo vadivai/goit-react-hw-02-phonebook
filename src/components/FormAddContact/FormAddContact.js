@@ -21,7 +21,6 @@ export const FormAddContact = ({ onAddContact }) => {
         actions.resetForm();
       }}
     >
-      {/* onSubmit={() => onAddContact(name)} */}
       <Form>
         <FormGroup>
           Name
